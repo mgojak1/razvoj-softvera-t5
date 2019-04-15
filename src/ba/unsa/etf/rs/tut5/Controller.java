@@ -12,33 +12,33 @@ import java.util.ResourceBundle;
 import static java.lang.System.exit;
 
 public class Controller implements Initializable {
-    public TextField imeField;
-    public TextField prezimeField;
-    public TextField mailField;
-    public TextField usernameField;
-    public PasswordField passField;
-    public Button btnAdd;
-    public ListView<Korisnik> listView;
-    public Button btnEnd;
+    public TextField imePolje;
+    public TextField prezimePolje;
+    public TextField mailPolje;
+    public TextField usernamePolje;
+    public PasswordField passPolje;
+    public Button btndodaj;
+    public ListView<Korisnik> listKorisnika;
+    public Button btnkraj;
     private KorisniciModel model;
-
     public Controller(KorisniciModel model) {
         this.model = model;
-    }
-
-    public void dodaj(ActionEvent actionEvent) {
-
     }
 
     public void kraj(ActionEvent actionEvent) {
         exit(0);
     }
 
+    public void dodaj(ActionEvent actionEvent) {
+
+
+    }
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         bind();
-        listView.setItems((model.getKorisnici()));
-        listView.selectionModelProperty().addListener(new ChangeListener<MultipleSelectionModel<Korisnik>>() {
+        listKorisnika.setItems((model.getKorisnici()));
+        listKorisnika.selectionModelProperty().addListener(new ChangeListener<MultipleSelectionModel<Korisnik>>() {
             @Override
             public void changed(ObservableValue<? extends MultipleSelectionModel<Korisnik>> observable, MultipleSelectionModel<Korisnik> oldValue, MultipleSelectionModel<Korisnik> newValue) {
                 if(newValue==null){
@@ -54,18 +54,18 @@ public class Controller implements Initializable {
     }
 
     private void unbind() {
-        imeField.textProperty().unbindBidirectional(model.getTrenutniKorisnik().imeProperty());
-        prezimeField.textProperty().unbindBidirectional((model.getTrenutniKorisnik()).prezimeProperty());
-        mailField.textProperty().unbindBidirectional((model.getTrenutniKorisnik().emailProperty()));
-        usernameField.textProperty().unbindBidirectional((model.getTrenutniKorisnik().usernameProperty()));
-        passField.textProperty().unbindBidirectional(model.getTrenutniKorisnik().passwordProperty());
+        imePolje.textProperty().unbindBidirectional(model.getTrenutniKorisnik().imeProperty());
+        prezimePolje.textProperty().unbindBidirectional((model.getTrenutniKorisnik()).prezimeProperty());
+        mailPolje.textProperty().unbindBidirectional((model.getTrenutniKorisnik().emailProperty()));
+        usernamePolje.textProperty().unbindBidirectional((model.getTrenutniKorisnik().usernameProperty()));
+        passPolje.textProperty().unbindBidirectional(model.getTrenutniKorisnik().passwordProperty());
     }
 
     private void bind() {
-        imeField.textProperty().bindBidirectional(model.getTrenutniKorisnik().imeProperty());
-        prezimeField.textProperty().bindBidirectional((model.getTrenutniKorisnik()).prezimeProperty());
-        mailField.textProperty().bindBidirectional((model.getTrenutniKorisnik().emailProperty()));
-        usernameField.textProperty().bindBidirectional((model.getTrenutniKorisnik().usernameProperty()));
-        passField.textProperty().bindBidirectional(model.getTrenutniKorisnik().passwordProperty());
+        imePolje.textProperty().bindBidirectional(model.getTrenutniKorisnik().imeProperty());
+        prezimePolje.textProperty().bindBidirectional((model.getTrenutniKorisnik()).prezimeProperty());
+        mailPolje.textProperty().bindBidirectional((model.getTrenutniKorisnik().emailProperty()));
+        usernamePolje.textProperty().bindBidirectional((model.getTrenutniKorisnik().usernameProperty()));
+        passPolje.textProperty().bindBidirectional(model.getTrenutniKorisnik().passwordProperty());
     }
 }
